@@ -72,7 +72,6 @@ class Articles extends Component {
     })
       .then(res => this.loadArticles())
       .catch(err => console.log(err));
-    
   };
 
   render() {
