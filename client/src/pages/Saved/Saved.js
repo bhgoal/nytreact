@@ -65,38 +65,7 @@ class Saved extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>NY Times Article Search</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.topic}
-                onChange={this.handleInputChange}
-                name="topic"
-                placeholder="Topic (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Start Year (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="End Year (required)"
-              />
-              <FormBtn
-                disabled={!(this.state.topic && this.state.startYear && this.state.endYear)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-8 sm-12">
             <Jumbotron>
               <h1>Articles On My List</h1>
             </Jumbotron>
@@ -104,12 +73,17 @@ class Saved extends Component {
               <List>
                 {this.state.articles.map(article => (
                   <ListItem key={article._id}>
-                    <Link to={"/articles/" + article._id}>
+                    <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
+                    <span>
+                      {article.title}
+                    </span><br/>
+                    Published on {article.date}<br/>
+                    <Link to={article.url}>
                       <strong>
-                        {article.title} on {article.date} at {article.url}
+                        {article.url}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
+                    
                   </ListItem>
                 ))}
               </List>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
+import SaveBtn from "../../components/SaveBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -118,15 +118,16 @@ class Articles extends Component {
               <List>
                 {this.state.articles.slice(0, 5).map(article => (
                   <ListItem key={article._id}>
-                    <strong>
-                        {article.headline.main}<br/>Published on {article.pub_date}
-                    </strong><br/>
+                    <SaveBtn onClick={() => this.handleSaveArticle(article)} />
+                    <span>
+                        {article.headline.main}
+                    </span><br/>
+                    Published on {article.pub_date}<br/>
                     <Link to={article.web_url}>
                       <strong>
                         {article.web_url}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.handleSaveArticle(article)} />
                   </ListItem>
                 ))}
               </List>

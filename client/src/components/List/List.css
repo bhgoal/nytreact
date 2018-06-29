@@ -16,12 +16,8 @@
   border-right: none;
 }
 
-.list-overflow-container li * {
-  cursor: pointer;
-}
-
 .list-overflow-container li a {
-  color: #2A878C;
+  color: #2799da;
 }
 
 .list-overflow-container li:first-child {
@@ -30,4 +26,9 @@
 
 .list-overflow-container li:last-child {
   border-bottom: none;
+}
+
+.list-group-item span:last-of-type {
+  font-size: 26px;
+  font-weight: bold;
 }
