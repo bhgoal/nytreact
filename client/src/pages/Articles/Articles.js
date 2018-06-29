@@ -118,7 +118,7 @@ class Articles extends Component {
               <List>
                 {this.state.articles.slice(0, 5).map(article => (
                   <ListItem key={article._id}>
-                    <SaveBtn onClick={() => this.handleSaveArticle(article)} />
+                    <SaveBtn handleSaveArticle={this.handleSaveArticle} article={article} />
                     <span>
                         {article.headline.main}
                     </span><br/>

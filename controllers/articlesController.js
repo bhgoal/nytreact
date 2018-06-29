@@ -5,7 +5,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Article
       .find(req.query)
-      .sort({ date: -1 })
+      .sort({ createdAt: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -17,7 +17,7 @@ module.exports = {
   },
   create: function(req, res) {
     db.Article
-      .create(req.body)
+      .findOneAndUpdate({url: req.body.url }, req.body, {upsert:true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
